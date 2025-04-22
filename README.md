@@ -5,7 +5,7 @@
     <figcaption style="font-size: 0.8em;">AUGUR (https://runeberg.org/nfbb/0226.html) Public Domain.</figcaption>
 </p>
 
-The code for the paper AUGUR, A flexible and efficient optimization algorithm for identification of optimal adsorption sites. We present the pipeline for the CHINI cluster to allow for a flexible template for ease of use.
+The code for the paper AUGUR, A flexible and efficient optimization algorithm for identification of optimal adsorption sites. We present the pipeline for the CHINI cluster, silicene surface and training on two systems (all in separate branches) to allow for a flexible template for ease of use.
 
 **Requirements**
 
