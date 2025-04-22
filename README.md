@@ -55,6 +55,7 @@ once you configure everything run main.py
 
 
 **Results**
+
 If everything is done correctly, the bo suggestions should appear in the bo_data folder. 
 - the model pickles should appear in the model folder
 - the energy surface, std surface and their corresponding csv containing the data should appear in the figures folder so long as the plot_flag in the config.json is set to true
