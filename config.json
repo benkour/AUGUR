@@ -37,7 +37,7 @@
 
     "_comment": "The following specify the number of cores used when generating BO samples. This needs benchmarking, more cores might not always be better",
     
-    "create_new_samples" : false,
+    "create_new_samples" : true,
     "parallel_sample_creation" : true,
     "number_of_cores" : 4,
     
@@ -47,7 +47,7 @@
     "bo_acquisition" : ["ucb"],
     "bo_tradeoff" : [ 0.1,0.5,100],
     
-    "train" : false,
+    "train" : true,
     "optimize" : true,
 
     "_comment" : "plot graphs or not",
