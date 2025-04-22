@@ -1,45 +1,46 @@
 {
     "_comment": "The following specify the chemical properties of the system, for more information see the documentation",
 
-    "name_of_system" : ["Pt3"],
-    "training_systems": ["Pt3"],
-    "prediction_system": "Pt3",
-    "energy_of_adsorbing": [-1038.350913],
-    "energy_of_adsorbate" : [-1778.725143985331],
+    "name_of_system" : ["C750_RC60"],
+    "training_systems": ["C750_RC60"],
+    "prediction_system": "C750_RC60",
+    "energy_of_adsorbing": [-508.44790166226],
+    "energy_of_adsorbate" : [-22.8668362847627],
     "_comment": "The following specify geometric properties of the system, for more information see the documentation",
 
-    "periodicity": false,   
+    "periodicity": true,   
     "cell_vectors": [
-        [30.1539993286000012,    0.0000000000000000 ,   0.0000000000000000],
-        [-15.0769996643000006,   26.1141294443000014,    0.0000000000000000],
-        [0.0000000000000000,    0.0000000000000000,   13.1800003052000001]
+        [30.888, 0,0],
+        [-15.444,26.74979267209374,0],
+        [0,0,0]
     ],
-    "surface_cluster" : "cluster",
+    "surface_cluster" : "surface",
     "van_der_waals_distances": false,
 
     "_comment": "The following specify whether a specific adsorbate atom should always be placed closest to the surface, for more information see the documentation",
 
-    "specific_atom_closest": false,
+    "specific_atom_closest": true,
     "which_atom":             -1,
     "probability_of_closest":   1,
 
     "_comment": "the following list allows you to specify surface atoms that should not be considered for adsorption sites",
 
-    "non_viable_surface_atoms": ["C"],
+    "non_viable_surface_atoms": [],
 
     "_comment": "The following specify the cut-off distance for the graph edges, the nr of epochs for training and number of samples generated for evaluation with BO",
 
-    "reprocess_data_for_training" : true,
-    "cut_off_distance" : 4,
-    "sample_size" : 10000,
+    "cut_off_distance" : 3,
+    "sample_size" : 1000,
     "epochs" : 5000,
+    "reprocess_data_for_training" : false,
+
 
 
     "_comment": "The following specify the number of cores used when generating BO samples. This needs benchmarking, more cores might not always be better",
-    
+
+    "parallel_sample_creation" : false,
+    "number_of_cores" : 8,
     "create_new_samples" : true,
-    "parallel_sample_creation" : true,
-    "number_of_cores" : 4,
     
     "_comment" : "The following allow you to decide the bayesian optimization parameters (acquisition_func : ucb, pi, pe), and tradeoff",
 
@@ -47,7 +48,7 @@
     "bo_acquisition" : ["ucb"],
     "bo_tradeoff" : [ 0.1,0.5,100],
     
-    "train" : true,
+    "train" : false,
     "optimize" : true,
 
     "_comment" : "plot graphs or not",

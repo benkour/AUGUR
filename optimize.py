@@ -58,7 +58,6 @@ def bo_optimization():
 
     # Extract the NR_OF_ABSORBANTS value from the configuration
     NR_OF_ABSORBANTS = adsorbate_coordinates.shape[0]
-    # %%
     BO_ITERATION = str(config["bo_round"])
     learning_rate = 1e-3
     EPOCHS = config['epochs']
@@ -69,10 +68,8 @@ def bo_optimization():
     test_set = False
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    # %%
     data_list, data_dict = data_preparation(types_to_include=[Prediction_Type])
     atoms = atom_extraction(Prediction_Type)
-    # %%
     cluster = data_dict[Prediction_Type][0][DATA_IDX[0]
                                             ][0].pos[:-NR_OF_ABSORBANTS]
     cluster_origin = list(zip(atoms[:-NR_OF_ABSORBANTS], cluster))
@@ -90,27 +87,19 @@ def bo_optimization():
         opt += optimum_energy(model, data_list)
     opt = opt/len(model_filenames)
 
-    # %%
 
-    # %%
-    # avg_dict = {}
-
-    # for filename in model_filenames:
-    #     model_state_dict = torch.load(os.path.join(os.getcwd(), filename))
-
-    #     for key,_ in model_state_dict.items():
-    #         if key not
-    device = 'cpu'
     start_time = time.time()
     model_gp = torch.load(os.path.join(
         os.getcwd(), filename), weights_only=False)
     opt = optimum_energy(model_gp, data_list)
-    # %%
+    print("inside bo_optimization")
+
+    #
     # read the coordinates from the xyz file adsorbate.xyz
 
     likelihood = gpytorch.likelihoods.GaussianLikelihood()
 
-    # %%
+    
     if config["van_der_waals_distances"]:
         surface_elements = atoms[:-NR_OF_ABSORBANTS]
         adsorbate_elements = atoms[-NR_OF_ABSORBANTS:]
@@ -140,13 +129,17 @@ def bo_optimization():
             json.dump(min_distances, json_file, indent=4)
     bo = BO(adsorbate_coordinates, cluster, atoms, opt, likelihood, model_filenames, method="pe",
             tradeoff=0, sample_size=SAMPLE_SIZE, device=device)
-    # %%
+    print("inside bo_optimization")
+
 
     bo.method = 'pi'
     bo.std_flag = False
     # time how long it takes to create the samples and predictions
     start_time = time.time()
+    print("before bo_optimization")
+
     bo.create_samples()
+    print("after create samples")
     end_time = time.time()
     print("--- %s seconds ---" % (time.time() - start_time))
     bo.create_predictions()

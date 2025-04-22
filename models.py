@@ -92,7 +92,6 @@ class BaseGNN(nn.Module):
             ), aggr='mean'
 
         )
-        self.gat_conv = GATConv(nodeembed_to, nodeembed_to, heads=2)
         self._fourth_conv_batchnorm = nn.BatchNorm1d(nodeembed_to)
 
         # Pooling and actuall prediction NN
@@ -133,10 +132,8 @@ class BaseGNN(nn.Module):
             node_features, edges, edge_features))
         node_features = self._third_conv_batchnorm(
             self._third_conv(node_features, edges))
-        # node_features = self.gat_conv(node_features, edges)
-        # node_features = self._fourth_conv_batchnorm(self._fourth_conv(
-        #     node_features, edges, edge_features))
-
+        node_features =self._fourth_conv_batchnorm(self._fourth_conv(
+            node_features, edges, edge_features))
         # node_features = self._first_conv(node_features, edges, edge_features)
         # node_features = self._second_conv(node_features, edges, edge_features)
 
@@ -154,10 +151,8 @@ class BaseGNN(nn.Module):
 class ExactGPModel(gpytorch.models.ExactGP):
     def __init__(self, train_x, train_y, likelihood):
         super(ExactGPModel, self).__init__(train_x, train_y, likelihood)
+        # +
         self.mean_module = gpytorch.means.ZeroMean()
-        # self.mean_module = gpytorch.means.ConstantMean(input_size=6)
-
-        # self.mean_module = gpytorch.means.LinearMean(input_size=6)
         # self.covar_module = gpytorch.kernels.ScaleKernel(gpytorch.kernels.RBFKernel(ard_num_dims=6))  # lengthscale for each dimension. Same shape as len(pooling_layer) # add white noise kernel, good for regression
         # self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         # self.base_kernel = gpytorch.kernels.RBFKernel(ard_num_dims=12) # lengthscale for each dimension. Same shape as len(pooling_layer) # add white noise kernel, good for regression
@@ -169,7 +164,7 @@ class ExactGPModel(gpytorch.models.ExactGP):
         # self.covar_module = gpytorch.kernels.RBFKernel(
         #     ard_num_dims=6)  # + gpytorch.kernels.LinearKernel()
         self.covar_module = gpytorch.kernels.ScaleKernel(gpytorch.kernels.SpectralMixtureKernel(
-            num_mixtures=4, ard_num_dims=6))  # + gpytorch.kernels.LinearKernel()
+            num_mixtures=3, ard_num_dims=6))  # + gpytorch.kernels.LinearKernel()
         # self.covar_module = gpytorch.kernels.RFFKernel(num_samples = 5, ard_num_dims = 6) #+ gpytorch.kernels.LinearKernel()
         # self.covar_module = gpytorch.kernels.SpectralMixtureKernel(num_mixtures=4, ard_num_dims=6) #  + gpytorch.kernels.LinearKernel(num_dimensions=6)
         # self.covar_module = gpytorch.kernels.ArcKernel(self.base_kernel,
