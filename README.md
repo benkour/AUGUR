@@ -20,6 +20,7 @@ Our code has been tested on python 3.10.13 and ubuntu 22.04 (jammy) using visual
   
   
  The config.json is where all the model parameters are to be defined
+ 
  **config.json parameters**
 
   - "name_of_system" is a list of all the systems you wish to include. This is especially useful for when you have multiple nuclearities. Simply define a list of strings that are contained in the file names you wish to include.
