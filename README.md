@@ -71,8 +71,8 @@ Have a look at the branch two_systems to see how to train on two systems and opt
 
 
 **Additional Information for advanced code alteration**
-You can go into the model.py and change the model architecture at will. This is where both the GNN and GP are located. 
 
+You can go into the model.py and change the model architecture at will. This is where both the GNN and GP are located. 
 You can choose to include more or fewer points of the simulation trajectory by going into the create_data.py and adding more values in the index variable (should look like this index = [5,10,20, -1])
 be wary! If you add too many points that are too similar to each other you will end up with a non invertible covariance matrix. So change these values keeping them sparse enough to be distinct but not too sparse so that information is not included. Trial and error might be required. (Also, dont put more points than the simulation has)
 
