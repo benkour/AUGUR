@@ -12,6 +12,5 @@ if config["train"]:
     from create_models import *
     create_model_function()
 if config["optimize"]:
-    print("Optimization")
     from optimize import *
     bo_optimization()

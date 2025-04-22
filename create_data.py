@@ -156,5 +156,4 @@ def create_data_function():
     for type_key, graph, file_index, data_point_index in graph_list:
         filename = f'{type_key}_{file_index}_data_{data_point_index}.pt'
         torch.save(graph, processed_data_path / filename)
-    print("Data saved to: ", processed_data_path)
 # %%
