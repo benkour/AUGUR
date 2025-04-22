@@ -8,6 +8,7 @@
 The code for the paper AUGUR, A flexible and efficient optimization algorithm for identification of optimal adsorption sites. We present the pipeline for the CHINI cluster to allow for a flexible template for ease of use.
 
 **Requirements**
+
 Our code has been tested on python 3.10.13 and ubuntu 22.04 (jammy) using visual code as the IDE. As a rule, everything should work in other systems as well but we cant guarantee it. The library versions we tested AUGUR with can be found in the requirements.txt. They can also be installed directly from requirements.txt using "pip install -r requirements.txt" from the folder level the requirements.txt resides.
 
 **How to input your data**
@@ -65,8 +66,9 @@ If everything is done correctly,
 - the proposed adsorption site visualization appear in the figures folder so long as the plot_flag in the config.json is set to true
 
 **Examples**
-Have a look at the branch silicene for periodic surface with complex adsorbate. Note that sometimes the parallel sample creation hangs. In this case resort to the sequential one
-Have a look at the branch two_systems to see how to train on two systems and optimize one. NOTE: even if the adsorbate is the same for both systems you still need to specify the adsorbate energy twice, once for every system as seen in the example branch.
+
+- the branch silicene contains an example for a for periodic surface (silicene) with complex adsorbate. Note that sometimes the parallel sample creation hangs. In this case resort to the sequential one
+- the branch two_systems contains an example about how to train on two systems (Pt3 and Pt6) and optimize one (Pt6). NOTE: even if the adsorbate is the same for both systems you still need to specify the adsorbate energy twice, once for every system as seen in the example branch.
 (Results may vary from the ones presented in the paper as we didnt recreate the exact architecture and other parameters for the sake of simplicity)
 
 
