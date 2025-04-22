@@ -61,6 +61,11 @@ If everything is done correctly, the bo suggestions should appear in the bo_data
 - the  truth vs prediction graph and its corresponding csv containing the data should appear in the figures folder so long as the plot_flag in the config.json is set to true
 - the proposed adsorption site visualization appear in the figures folder so long as the plot_flag in the config.json is set to true
 
+**Examples**
+Have a look at the branch silicene for periodic surface with complex adsorbate. Note that sometimes the parallel sample creation hangs. In this case resort to the sequential one
+Have a look at the branch two_systems to see how to train on two systems and optimize one. NOTE: even if the adsorbate is the same for both systems you still need to specify the adsorbate energy twice, once for every system as seen in the example branch.
+(Results may vary from the ones presented in the paper as we didnt recreate the exact architecture and other parameters for the sake of simplicity)
+
 
 **Additional Information for advanced code alteration**
 You can go into the model.py and change the model architecture at will. This is where both the GNN and GP are located. 
