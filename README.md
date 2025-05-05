@@ -35,8 +35,7 @@ This section can include what makes AUGUR special in comparision to the existing
 **Tested Configuration**:
 
 - Operating System: Ubuntu 22.04 (jammy)
-- Kardware: Maybe GPU/CPU or benchmarking ideas?
-- IDE: Visual Studio Code (Optional)
+- IDE: Visual Studio Code 
 
 **Note**: As a rule, everything should work on other systems as well but we cant guarantee it.
 
