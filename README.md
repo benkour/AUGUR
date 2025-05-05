@@ -60,7 +60,7 @@ This section can include what makes AUGUR special in comparision to the existing
   pip install -r requirements.txt
   cd AUGUR
   ```
-
+The code will also benefit from CUDA should you have an NVIDIA graphics card
 **How to input your data**
 
 
