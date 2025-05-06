@@ -11,8 +11,9 @@ This repository includes the code base of the paper **"AUGUR, A flexible and eff
 
 1. [Key Features (AUGUR) ](#key-features)
 2. [Software versions tested ](#system-requirements)
-3. [Command-Line-Usage](#installation)
 4. [Parameter and Input Specification](#parameter-specification)
+3. [Command Line Usage](#installation)
+4. [Expected Output](#output)
 5. [Tutorials](#tutorials)
 6. [Advanced Usage and troubleshooting](#advanced)
 7. [Citations](#citation)
@@ -106,7 +107,7 @@ The code will also benefit from CUDA should you have an NVIDIA graphics card
 **What to run** - once you configure everything run main.py
 
 
-**Results**
+## Expected Output <a name="output"></a>
 
 If everything is done correctly,
 
