@@ -109,7 +109,7 @@ The code will also benefit from CUDA should you have an NVIDIA graphics card
 
 ## Expected Output <a name="output"></a>
 
-If everything is done correctly,
+If everything is done correctly (and you have set the correct flags in the config.json to true),
 
 - the bo suggestions should appear in the bo_data folder.
 - the model pickles should appear in the model folder
