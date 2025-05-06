@@ -5,19 +5,17 @@
     <figcaption style="font-size: 0.8em;">AUGUR (https://runeberg.org/nfbb/0226.html) Public Domain.</figcaption>
 </p>
 
-This repository includes the code base of the paper **"AUGUR, A flexible and efficient optimization algorithm for identification of optimal adsorption sites"**. In here, we present the pipeline for the Chini clusters, silicene surface and training on two systems (all in separate branches) to allow for a flexible template for ease of use. (??)
+This repository includes the code base of the paper **"AUGUR, A flexible and efficient optimization algorithm for identification of optimal adsorption sites"**. In here, we present the pipeline for the Chini clusters, silicene surface and training on two systems (all in separate branches) to allow for a flexible template for ease of use.
 
 ## Table of Contents
 
 1. [Key Features (AUGUR) ](#key-features)
 2. [Software versions tested ](#system-requirements)
 3. [Command-Line-Usage](#installation)
-4. [Repository Structure?? - ](#repository-structure)
-5. [Data Generation and Preparation ?](#data-preparation-guideAbout-the-format-ofxyzortrj???)
-6. [Workflow / Tutorials](#workflow-tutorials)
-7. [Troubleshooting and best Practices](#troubleshooting)
-8. [Contributing](#contributing)
-9. [Citations](#citation)
+4. [Parameter and Input Specification](#parameter-specification)
+5. [Tutorials](#tutorials)
+6. [Advanced Usage and troubleshooting](#advanced)
+7. [Citations](#citation)
 
 
 
@@ -45,22 +43,8 @@ This section can include what makes AUGUR special in comparision to the existing
 
 *For using AUGUR with any other simulation softwares, adjust the create_data.py to read the respective trajectory formats or contact us at Johnkouroudis[at]gmail[dot]com. (change the things in [ ] with their symbols. They are only there to confuse the vulture bots prowling the internet *
 
-## Command-Line-Usage <a name="installation"></a>
 
-
-- The specific library versions we tested AUGUR with can be found in the requirements.txt. They can be installed directly using `pip install -r requirements.txt` from the folder level the requirements.txt resides.
-
-  ```
-  # Clone the Repository
-  git clone https://github.com/benkour/AUGUR.git
-  # Make a virtual env
-  python -m venv augur_env
-  source ./augur_env/bin/activate
-  pip install -r requirements.txt
-  cd AUGUR
-  ```
-The code will also benefit from CUDA should you have an NVIDIA graphics card
-**How to input your data**
+## Parameter and Input Specification<a name="parameter-specification"></a>
 
 
   - Place all the optimized .xyz trajectory files obtained from the converged simulations in the **data_raw** folder. (For example, for the current software in use (Orca 5.04), the optimized trajectory files look as in the data_raw folder of the current repository). Note that a minimum of 3 converged trajectory files are required before AUGUR can run.
@@ -103,6 +87,21 @@ The code will also benefit from CUDA should you have an NVIDIA graphics card
 | `optimize`                    | Bool    | true or false, whether to run bo or not, Useful for when you want to simply evaluate how the model parameters affect the accuracy                                                                                                                                                          |
 | `plot_flag`                   | Bool    | true or false, whether to plot results or not. If true the pipeline wont move till you close the graph)                                                                                                                                                                                    |
 
+## Command-Line-Usage <a name="installation"></a>
+
+
+- The specific library versions we tested AUGUR with can be found in the requirements.txt. They can be installed directly using `pip install -r requirements.txt` from the folder level the requirements.txt resides.
+
+  ```
+  # Clone the Repository
+  git clone https://github.com/benkour/AUGUR.git
+  # Make a virtual env
+  python -m venv augur_env
+  source ./augur_env/bin/activate
+  pip install -r requirements.txt
+  cd AUGUR
+  ```
+The code will also benefit from CUDA should you have an NVIDIA graphics card
 
 **What to run** - once you configure everything run main.py
 
@@ -117,17 +116,18 @@ If everything is done correctly,
 - the  truth vs prediction graph and its corresponding csv containing the data should appear in the figures folder so long as the plot_flag in the config.json is set to true
 - the proposed adsorption site visualization appear in the figures folder so long as the plot_flag in the config.json is set to true
 
-**Examples**
+## Tutorials <a name="tutorials"></a>
 
 - the branch silicene contains an example for a for periodic surface (silicene) with complex adsorbate. Note that sometimes the parallel sample creation hangs. In this case resort to the sequential one
 - the branch two_systems contains an example about how to train on two systems (Pt3 and Pt6) and optimize one (Pt6). NOTE: even if the adsorbate is the same for both systems you still need to specify the adsorbate energy twice, once for every system as seen in the example branch.
 (Results may vary from the ones presented in the paper as we didnt recreate the exact architecture and other parameters for the sake of simplicity)
 
 
-**Additional Information for advanced code alteration**
+## Advanced Usage and troubleshooting <a name="advanced"></a>
 
 - You can go into the model.py and change the model architecture at will. This is where both the GNN and GP are located.
 - You can choose to include more or fewer points of the simulation trajectory by going into the create_data.py and adding more values in the index variable (should look like this index = [5,10,20, -1])
 be wary! If you add too many points that are too similar to each other you will end up with a non invertible covariance matrix. So change these values keeping them sparse enough to be distinct but not too sparse so that information is not included. Trial and error might be required. (Also, dont put more points than the simulation has)
+-Sometimes the parallel sample creation runs out of memory and hangs. In this case, you are adviced to run the data preprocessing first (changing the  reprocess_data_for_training variable to true and create_new_samples false in the configjson), running the code and then, run it again by setting the reprocess_data_for_training to false and create_new_samples to true. Sequential placement should always work.  
 
 
