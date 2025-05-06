@@ -43,7 +43,7 @@ This section can include what makes AUGUR special in comparision to the existing
 - ORCA 5.04 (Trajectory file compatibility for systems: chini clusters)
 - CP2k (systems - Silicene)
 
-*For using AUGUR with any other simulation softwares, adjust the create_data.py to read the respective trajectory formats or contact us at Johnkouroudis@gmail.com.*
+*For using AUGUR with any other simulation softwares, adjust the create_data.py to read the respective trajectory formats or contact us at Johnkouroudis[at]gmail[dot]com. (change the things in [ ] with their symbols. They are only there to confuse the vulture bots prowling the internet *
 
 ## Command-Line-Usage <a name="installation"></a>
 
