@@ -16,7 +16,7 @@ This repository includes the code base of the paper **"AUGUR, A flexible and eff
 4. [Expected Output](#output)
 5. [Tutorials](#tutorials)
 6. [Advanced Usage and troubleshooting](#advanced)
-7. [Citations](#citation)
+7. [How to cite AUGUR](#citation)
 
 
 
@@ -131,7 +131,7 @@ If everything is done correctly (and you have set the correct flags in the confi
 be wary! If you add too many points that are too similar to each other you will end up with a non invertible covariance matrix. So change these values keeping them sparse enough to be distinct but not too sparse so that information is not included. Trial and error might be required. (Also, dont put more points than the simulation has)
 - Sometimes the parallel sample creation runs out of memory and hangs. In this case, you are adviced to run the data preprocessing first (changing the  reprocess_data_for_training variable to true and create_new_samples false in the configjson), running the code and then, run it again by setting the reprocess_data_for_training to false and create_new_samples to true. Sequential placement should always work.  
 
-## Citation <a name = "citation"><\a>
+## How to cite AUGUR <a name="citation"></a>
 if you found AUGUR useful you can cite it as follows
 ```
 @article{kouroudis2025augur,
