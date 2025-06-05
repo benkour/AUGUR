@@ -131,4 +131,18 @@ If everything is done correctly (and you have set the correct flags in the confi
 be wary! If you add too many points that are too similar to each other you will end up with a non invertible covariance matrix. So change these values keeping them sparse enough to be distinct but not too sparse so that information is not included. Trial and error might be required. (Also, dont put more points than the simulation has)
 - Sometimes the parallel sample creation runs out of memory and hangs. In this case, you are adviced to run the data preprocessing first (changing the  reprocess_data_for_training variable to true and create_new_samples false in the configjson), running the code and then, run it again by setting the reprocess_data_for_training to false and create_new_samples to true. Sequential placement should always work.  
 
+## Citation ##<a name = "citation"><\a>
+if you found AUGUR useful you can cite it as follows
+```
+@article{kouroudis2025augur,
+  title={AUGUR, a flexible and efficient optimization algorithm for identification of optimal adsorption sites},
+  author={Kouroudis, Ioannis and Misciasci, Neel and Mayr, Felix and M{\"u}ller, Leon and Gu, Zhaosu and Gagliardi, Alessio and others},
+  journal={npj Computational Materials},
+  volume={11},
+  number={1},
+  pages={1--13},
+  year={2025},
+  publisher={Nature Publishing Group}
+}
+```
 
